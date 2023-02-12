@@ -8,6 +8,7 @@ const Signup = () => {
   const [userEmail, setuserEmail] = useState('');
   const [pass, setPass] = useState('');
   const [reppass, setrepPass] = useState('');
+  // the code above defines three state variables (variables that store info that can change) using the useState hook.  
 
   // const [message, setMessage] = useState('');
 

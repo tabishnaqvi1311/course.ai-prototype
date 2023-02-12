@@ -179,3 +179,10 @@ nav ul li a:hover{
   color: white;
 }
 
+.cardContact {
+  background-color: whitesmoke;
+  padding: 10px 20px;
+  width: 20%;
+  
+}
+

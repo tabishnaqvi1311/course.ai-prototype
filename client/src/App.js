@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import Login from './Pages/Login/Login'
 import Signup from './Pages/Signup/Signup'
 import About from './Pages/About/About'
+import Contact from './Pages/Contact/Contact'
 
 const App = () => (
   <BrowserRouter>
@@ -12,8 +13,8 @@ const App = () => (
     <Routes>
       <Route path='/' exact element={<Home />} />
       <Route path='/about' element={<About />} />
-      {/* <Route path='/services' element={<Services />} />
-      <Route path='/contact' element={<Contact />} /> */}
+      {/* <Route path='/services' element={<Services />} /> */}
+      <Route path='/contact' element={<Contact />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
     </Routes>
