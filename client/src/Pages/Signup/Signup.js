@@ -1,7 +1,7 @@
 import React from 'react'
-import { Navbar } from '../../components'
+// import { Navbar } from '../../components'
 import { Link } from 'react-router-dom'
-import { useState,useEffect } from 'react'
+import { useState } from 'react'
 
 const Signup = () => {
 
@@ -12,15 +12,32 @@ const Signup = () => {
 
   // const [message, setMessage] = useState('');
 
-  const handleSubmit = event => {
-    console.log('handleSubmit ran\n');
+  const submitUser = async () => {
+    const response = await fetch('http://localhost:8181/submit',{
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: userEmail,
+        password: pass
+      })
+    });
+    const json = await response.json();
+    console.log(json);
+  }
+
+  const handleSubmit = async (event) => {
+    // console.log('handleSubmit ran\n');
     event.preventDefault();   //prevent page refresh on submit
     //access input values
-    console.log(userEmail)
-    console.log(pass)
-    console.log(reppass)
+
+    await submitUser();
+    // console.log(userEmail)
+    // console.log(pass)
+    // console.log(reppass)
     //check for repPass
-    if((pass == reppass) && (pass.length >= 8)){
+    if((pass === reppass) && (pass.length >= 8)){
       //reset input values
       setuserEmail('')  
       setPass('');
@@ -38,7 +55,7 @@ const Signup = () => {
       <div className='left-part'>
         Welcome Back
         <div className='signupForm' >
-          <form className='frm' autoComplete='off' method='POST' onSubmit={handleSubmit}>
+          <form className='frm' autoComplete='off' onSubmit={handleSubmit}>
             <input type='email' placeholder='Email' name='email' required className='contactField' value={userEmail} onChange={event => setuserEmail(event.target.value)}/>
 
             <input type='password' placeholder='Password' name='psw' required className='contactField' value={pass} onChange={event => setPass(event.target.value)}/>
