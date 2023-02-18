@@ -1,6 +1,6 @@
 # Introduction
 
-This project uses AI to generate courses and hosts these projects on a website called 'courses.ai'. 
+This project uses AI to generate courses and hosts these courses on a website called 'courses.ai'. 
 
 # What did I use?
 
