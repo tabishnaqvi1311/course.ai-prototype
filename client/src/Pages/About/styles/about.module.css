@@ -1,0 +1,69 @@
+.main {
+    /* background: url('../assets/leaves.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: black;
+    color: aliceblue;
+}
+
+.flexMainContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    font-size: larger;
+    margin: 0 8rem;
+}
+
+.flexInnerContainer {
+    display: flex;
+    flex-direction: column;
+    /* margin: 10rem; */
+}
+
+.flexAbout {
+    background-color: #0f81ad;
+    color: black;
+    /* padding: 40px; */
+    border-radius: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fade 2s linear;
+}
+
+.right,
+.left {
+    margin: 3rem 0;
+    background-color: whitesmoke;
+    height: 14rem;
+    width: 14rem;
+    border-radius: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeS 1s linear;
+    color: black;
+}
+
+.left {
+    margin-left: 8rem;
+}
+/* 
+.flexAbout,
+.right,
+.left {
+    animation: fade 1s linear;
+} */
+
+@keyframes fade {
+    0% {opacity: 0;}
+    100% {opacity: 100;}
+}
+@keyframes fadeS {
+    0%,50% {opacity: 0;}
+    100% {opacity: 100;}
+}
+
