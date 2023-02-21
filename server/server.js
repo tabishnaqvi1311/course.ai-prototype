@@ -1,20 +1,30 @@
+//importing express.js library and creating an instance of an express app
 const express = require('express');
 const app = express();
+//importing a function that connects to a MongoDB database and calls it 
 const connecttoMongo = require('./db');
-const UserSchema = require('./models/User');
-const cors = require('cors');
-
 connecttoMongo();
 
-app.use(express.json())
+//importing a mongoose schema that defines a user model(schema) for the Mongodb databse
+const UserSchema = require('./models/User');
+
+//importing the Cross-Origin middleware to enable cross-origin requests
+const cors = require('cors');
 app.use(cors());
 
+//add middleware to parse incoming server request bodies as JSON
+app.use(express.json())
+
+//define a route handler for GET requests to the root URL path
 app.get('/',(req,res) => {
     res.send('stuff')
 });
 
+//define a route handler for POST requests to the /submit URL path
 app.post('/submit',async(req,res)=>{
     console.log(req.body);
+
+    //create new user in db
     const newUser = await UserSchema.create({
         email: req.body.email,
         password: req.body.password
