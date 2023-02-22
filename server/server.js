@@ -3,17 +3,17 @@ const express = require('express');
 const app = express();
 //importing a function that connects to a MongoDB database and calls it 
 const connecttoMongo = require('./db');
-connecttoMongo();
 
 //importing a mongoose schema that defines a user model(schema) for the Mongodb databse
 const UserSchema = require('./models/User');
 
 //importing the Cross-Origin middleware to enable cross-origin requests
 const cors = require('cors');
-app.use(cors());
+connecttoMongo();
 
 //add middleware to parse incoming server request bodies as JSON
 app.use(express.json())
+app.use(cors());
 
 //define a route handler for GET requests to the root URL path
 app.get('/',(req,res) => {
