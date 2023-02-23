@@ -1,15 +1,17 @@
 //importing express.js library and creating an instance of an express app
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const path = require('path');
 //importing a function that connects to a MongoDB database and calls it 
-const connecttoMongo = require('./db');
+// const connecttoMongo = require('./db');
 
 //importing a mongoose schema that defines a user model(schema) for the Mongodb databse
-const UserSchema = require('./models/User');
+// const UserSchema = require('./models/User');
 
 //importing the Cross-Origin middleware to enable cross-origin requests
 const cors = require('cors');
-connecttoMongo();
+// connecttoMongo();
 
 //add middleware to parse incoming server request bodies as JSON
 app.use(express.json())
@@ -25,13 +27,16 @@ app.post('/submit',async(req,res)=>{
     console.log(req.body);
 
     //create new user in db
-    const newUser = await UserSchema.create({
+    const newUser = {
         email: req.body.email,
         password: req.body.password
-    });
+    };
     if (newUser) {
+        fs.writeFileSync('output.txt',JSON.stringify(newUser))
         return res.status(200).json(newUser);
+        
     }
+
     res.status(500).json({ error: 'Internal Server Error' });
 });
 
